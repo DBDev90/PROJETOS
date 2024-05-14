@@ -5,7 +5,7 @@ import { FerramentasDaListagem } from "../../shared/components";
 import { IListagemPessoa, PessoasService } from "../../shared/services/api/pessoas/PessoasService";
 import { useDebounce } from "../../shared/hooks";
 import { Box, LinearProgress, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from "@mui/material";
-import { WidthFull } from "@mui/icons-material";
+import { Enviroment } from "../../shared/environment";
 
 export const ListagemDePessoas: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -61,14 +61,19 @@ export const ListagemDePessoas: React.FC = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map(row => (
+                            {rows && (rows.map(row => (
                                 <TableRow key={row.id}>
                                     <TableCell>Ações</TableCell>
                                     <TableCell>{row.nomeCompleto}</TableCell>
                                     <TableCell>{row.email}</TableCell>
                                 </TableRow>
-                            ))}
+                            )))}
                         </TableBody>
+
+                        {totalCont === 0 && !isLoading && (
+                            <caption>{Enviroment.LISTAGEM_VAZIA}</caption>
+                        )}
+
                         <TableFooter>
                             {isLoading && (
                                 <TableRow>

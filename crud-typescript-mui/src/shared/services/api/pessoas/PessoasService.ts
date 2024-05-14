@@ -23,14 +23,14 @@ type TPessoasComTotalCount = {
 const getAll = async (page: 1, filter: string = ""): Promise<TPessoasComTotalCount | Error> => {
     try {
         const urlRelativa = `/pessoas?_page=${page}&_limite=${Enviroment.LIMITE_DE_LINHAS}&nomeCompleto_like=${filter}`;
-        const { data } = await Api.get(urlRelativa);
+        const { data, headers } = await Api.get(urlRelativa);
 
         if (data) {
-            return data
-            // return {
-            //     data,
-            //     totalCount: Number(headers['x-total-count'] || Enviroment.LIMITE_DE_LINHAS)
-            // };
+            // return data
+            return {
+                data,
+                totalCount: Number(headers['x-total-count'] || Enviroment.LIMITE_DE_LINHAS)
+            };
         }
 
         return new Error('Erro ao listar os registros.');
