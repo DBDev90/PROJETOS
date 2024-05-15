@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDrawerContext } from "../shared/contexts";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Dashboard, ListagemDePessoas } from "../pages";
+import { Dashboard, DetalheDePessoa, ListagemDePessoas } from "../pages";
 
 export const AppRoutes = () => {
   const { setDrawerOptions } = useDrawerContext();
@@ -38,7 +38,7 @@ export const AppRoutes = () => {
       <Route
         path="/pessoas/detalhe/:id"
         element={
-          <p>Detalhe</p>
+          <DetalheDePessoa />
         }
       />
 
