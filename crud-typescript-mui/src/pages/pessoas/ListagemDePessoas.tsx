@@ -35,7 +35,7 @@ export const ListagemDePessoas: React.FC = () => {
     }, [searchParams]);
 
     const pagina = useMemo(() => {
-        return Number(searchParams.get("pagina") || 1);
+        return Number(searchParams.get("pagina") || "1");
     }, [searchParams]);
 
     useEffect(() => {
@@ -65,7 +65,7 @@ export const ListagemDePessoas: React.FC = () => {
                     mostrarInputBusca
                     textoBusca={busca}
                     aoMudarTextoBusca={(texto) =>
-                        setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
+                        setSearchParams({ busca: texto, pagina: "1" }, { replace: true })
                     }
                 />
             }
