@@ -40,7 +40,7 @@ const getAll = async (page = 1, filter = ''): Promise<TPessoasComTotalCount | Er
     }
 };
 
-const getById = async (id: number): Promise<TPessoasComTotalCount | Error> => {
+const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
     try {
         const { data } = await Api.get(`/pessoas/${id}`);
 
@@ -82,7 +82,6 @@ const updateById = async (id: number, dados: IDetalhePessoa): Promise<void | Err
 const deleteById = async (id: number): Promise<void | Error> => {
     try {
         await Api.delete(`/pessoas/${id}`);
-        return alert(`O registro ${id} foi excluído com sucesso!`);
     } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao excluir o registro.');

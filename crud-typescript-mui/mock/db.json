@@ -13,22 +13,10 @@
       "nomeCompleto": "Ana Oliveira"
     },
     {
-      "id": 5,
-      "email": "pedro@example.com",
-      "cidadeId": 567,
-      "nomeCompleto": "Pedro Santos"
-    },
-    {
       "id": 6,
       "email": "sandra@example.com",
       "cidadeId": 890,
       "nomeCompleto": "Sandra Costa"
-    },
-    {
-      "id": 7,
-      "email": "fernando@example.com",
-      "cidadeId": 123,
-      "nomeCompleto": "Fernando Martins"
     },
     {
       "id": 8,
@@ -185,12 +173,6 @@
       "email": "ana@example.com",
       "cidadeId": 789,
       "nomeCompleto": "Ana Rodrigues"
-    },
-    {
-      "id": 34,
-      "email": "paulo@example.com",
-      "cidadeId": 234,
-      "nomeCompleto": "Paulo Lima"
     },
     {
       "id": 35,
