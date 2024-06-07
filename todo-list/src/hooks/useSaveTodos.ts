@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { TodoContext } from "../contexts/TodoContext";
 import { AES, enc } from "crypto-js";
@@ -40,5 +41,5 @@ export const useSaveTodos = () => {
     // Monitoring all changes on todos
     useEffect(() => {
         handleChangesTodo()
-    }, [state]);
+    }, [handleChangesTodo, state]);
 }
