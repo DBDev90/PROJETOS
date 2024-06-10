@@ -10,27 +10,35 @@ type Post = {
 export const App = () => {
   const [postsData, setPostsData] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleGetPosts = async () => {
     setLoading(true);
 
-    const request = await fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json"
-      }
-    });
+    try {
+      const request = await fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json"
+        }
+      });
+      const posts: Post[] = await request.json();
+      setPostsData(posts);
+    } catch (error) {
+      setErrorMessage("Erro ao consultar os dados.")
+    }
 
-    const posts: Post[] = await request.json();
     setLoading(false);
-    setPostsData(posts);
-  }
+  };
 
   return (
     <div>
       <button onClick={handleGetPosts}>Fazer requisição</button>
 
       {loading && "Carregando..."}
+      {errorMessage && (
+        <p>{errorMessage}</p>
+      )}
 
       <ul>
         {postsData.map((item) => (
