@@ -8,9 +8,12 @@ type Post = {
 };
 
 export const App = () => {
-  const [postsData, setPostsData] = useState<Post[]>([])
+  const [postsData, setPostsData] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const handleGetPosts = async () => {
+    setLoading(true);
+
     const request = await fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "GET",
       headers: {
@@ -19,13 +22,15 @@ export const App = () => {
     });
 
     const posts: Post[] = await request.json();
-
+    setLoading(false);
     setPostsData(posts);
   }
 
   return (
     <div>
       <button onClick={handleGetPosts}>Fazer requisição</button>
+
+      {loading && "Carregando..."}
 
       <ul>
         {postsData.map((item) => (
