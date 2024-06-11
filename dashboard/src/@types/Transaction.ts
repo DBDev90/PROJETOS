@@ -30,7 +30,7 @@ export type ApiGetTransaction = {
 
 export type ApiGetDashboard = {
     transactions: TransactionDashboard[];
-    pendin_transactions: number;
+    pending_transactions: number;
     completed_transactions: number;
 };
 
