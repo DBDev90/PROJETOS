@@ -8,13 +8,15 @@ type Post = {
 }
 
 export const App = () => {
+  axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
+
   const handleGetPosts = () => {
-    axios.get<Post[]>("https://jsonplaceholder.typicode.com/posts")
+    axios.get<Post[]>("/posts")
       .then(response => { console.log(response.data); });
   };
 
   const handlePostPosts = () => {
-    axios.post("https://jsonplaceholder.typicode.com/posts", {
+    axios.post("/posts", {
       title: "Novo post",
       body: "Novo body",
       userId: 1
