@@ -3,3 +3,4 @@ export * from "./Home";
 export * from "./Product";
 export * from "./Products";
 export * from "./NotFoundPage";
+export * from "./Login";
