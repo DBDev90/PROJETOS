@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { About, Home, Product } from "./pages";
+import { About, Home, Product, Products } from "./pages";
 
 export const App = () => {
   return (
@@ -7,8 +7,11 @@ export const App = () => {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/products/:cateforyId/:productId" element={<Product />} />
+        <Route path="/products">
+          <Route index element={<Products />} />
+          <Route path=":cateforyId/:productId" element={<Product />} />
+        </Route>
       </Routes>
     </div>
   );
-}
+};
