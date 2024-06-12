@@ -16,7 +16,7 @@ export const App = () => {
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-
+      Teste
     </ThemeProvider>
   );
 };
