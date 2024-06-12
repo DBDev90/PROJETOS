@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 import { useAuth } from "./hooks/Auth";
 import { useTheme } from "./hooks/Theme";
+import { ThemeProvider } from "styled-components";
+import { lightTheme } from "./themes/lightTheme";
+import { darkTheme } from "./themes/darkTheme";
 
 export const App = () => {
   const { handleAuthenticateUser } = useAuth();
-  const { handleInitTheme } = useTheme();
+  const { handleInitTheme, theme } = useTheme();
 
   useEffect(() => {
     handleAuthenticateUser();
@@ -12,8 +15,8 @@ export const App = () => {
   }, [handleAuthenticateUser, handleInitTheme]);
 
   return (
-    <div>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
 
-    </div>
+    </ThemeProvider>
   );
 };
