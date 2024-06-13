@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/Auth";
 import { useNavigate } from "react-router-dom";
-import { Card, CardBody, CardFooter, CardHeader, CardSubTitle, CardTitle, Container, Link, Wrapper } from "./styles";
+import {
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
+    CardSubTitle,
+    CardTitle,
+    Container,
+    Link,
+    Wrapper,
+} from "./styles";
 import { Alert } from "../../components/alert";
 import { TextInput } from "../../components/textInput";
 import { Button } from "../../components/button";
@@ -21,33 +31,31 @@ export const Auth = ({ type }: Props) => {
     });
 
     const { handleSignIn, handleSignUp } = useAuth();
+
     const navigate = useNavigate();
 
-    const handleClick = async () => {
+    const handleOnClick = async () => {
         const [name, email, password] = [nameInput, emailInput, passwordInput];
 
-        if ((type === "signup" && !name) || !email || !password) {
+        if ((type == "signup" && !name) || !email || !password) {
             setShowAlert({
                 type: "error",
-                message: "Preencha todos os campos.",
+                message: "Preencha todos os campos!",
                 show: true,
             });
             return;
         }
 
-        const request = await (type === "signin"
+        const request = await (type == "signin"
             ? handleSignIn({ email, password })
             : handleSignUp({ name, email, password }));
 
-        if (request !== true) {
-            setShowAlert({
-                type: "error",
-                message: request,
-                show: true,
-            });
+        if (request != true) {
+            setShowAlert({ type: "error", message: request, show: true });
             return;
         }
 
+        // Redirect user after authentication
         navigate("/");
     };
 
@@ -68,48 +76,46 @@ export const Auth = ({ type }: Props) => {
                 <Card>
                     <CardHeader>
                         <CardTitle>
-                            {type === "signin" ? "Entre na sua conta" : "Criar nova conta"}
+                            {type == "signin" ? "Entre na sua conta!" : "Criar uma conta!"}
                         </CardTitle>
-                        <CardSubTitle>
-                            Insira as informações necessárias!
-                        </CardSubTitle>
+                        <CardSubTitle>Insira as informações necessárias!</CardSubTitle>
                     </CardHeader>
+
                     <CardBody>
-                        {type === "signup" && (
+                        {type == "signup" && (
                             <TextInput
                                 value={nameInput}
                                 placeholder="Digite seu nome"
-                                onChange={e => setNameInput(e.target.value)}
+                                onChange={(e) => setNameInput(e.target.value)}
                                 borderRadius="sm"
                             />
                         )}
 
                         <TextInput
                             value={emailInput}
-                            placeholder="Digite seu e-mail"
-                            onChange={e => setEmailInput(e.target.value)}
+                            placeholder="Digite seu email"
+                            onChange={(e) => setEmailInput(e.target.value)}
                             borderRadius="sm"
                         />
 
                         <TextInput
                             value={passwordInput}
                             placeholder="Digite sua senha"
-                            onChange={e => setPasswordInput(e.target.value)}
+                            onChange={(e) => setPasswordInput(e.target.value)}
                             borderRadius="sm"
                         />
                     </CardBody>
+
                     <CardFooter>
-                        <Button
-                            onClick={handleClick}
-                            size="md"
-                        >
-                            {type === "signin" ? "Entrar" : "Registre-se"}
+                        <Button onClick={handleOnClick} size="md">
+                            {type == "signin" ? "Entrar" : "Registrar-se"}
                         </Button>
 
-                        {type === "signin"
-                            ? <Link to="/signup">Não tem conta? Registre-se</Link>
-                            : <Link to="/signin">Já tem conta? Entrar</Link>
-                        }
+                        {type == "signin" ? (
+                            <Link to="/signup">Não tem conta? Registrar-se</Link>
+                        ) : (
+                            <Link to="/signin">Já tem conta? Entrar</Link>
+                        )}
                     </CardFooter>
                 </Card>
             </Container>

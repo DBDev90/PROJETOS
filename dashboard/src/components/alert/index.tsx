@@ -15,20 +15,22 @@ export const Alert = ({
     type,
     show,
     setShow,
-    autoHideDuration = 6000,
     title,
-    children
+    children,
+    autoHideDuration = 6000,
 }: Props) => {
     useEffect(() => {
         if (show && autoHideDuration) {
-            setTimeout(() => { setShow(false) }, autoHideDuration);
+            setTimeout(() => {
+                setShow(false);
+            }, autoHideDuration);
         }
     }, [autoHideDuration, setShow, show]);
 
     return (
         <Container $show={show} $type={type}>
-            {type === "error" && <MdInfoOutline className="icon" />}
-            {type === "success" && <MdDoneAll className="icon" />}
+            {type == "error" && <MdInfoOutline className="icon" />}
+            {type == "success" && <MdDoneAll className="icon" />}
 
             <Content>
                 {title && <Title>{title}</Title>}
@@ -37,4 +39,4 @@ export const Alert = ({
             </Content>
         </Container>
     );
-}
+};
