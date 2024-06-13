@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link as linkRouter } from "react-router-dom";
+import { Link as LinkRouter } from "react-router-dom";
 
 export const Wrapper = styled.div`
     background-color: ${props => props.theme.COLORS.background};
@@ -12,6 +12,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     width: 420px;
 `
@@ -65,7 +66,7 @@ export const CardFooter = styled.div`
     gap: 20px;
 `
 
-export const Link = styled(linkRouter)`
+export const Link = styled(LinkRouter)`
     font-size: ${props => props.theme.FONT_SIZES.sm};
-    color: ${props => props.theme.COLORS.primary};
+    color: ${props => props.theme.COLORS.primary}
 `

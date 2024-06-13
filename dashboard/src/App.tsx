@@ -4,6 +4,7 @@ import { useTheme } from "./hooks/Theme";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./themes/lightTheme";
 import { darkTheme } from "./themes/darkTheme";
+import { MainRoutes } from "./routes";
 
 export const App = () => {
   const { handleAuthenticateUser } = useAuth();
@@ -16,7 +17,7 @@ export const App = () => {
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      Teste
+      <MainRoutes />
     </ThemeProvider>
   );
 };

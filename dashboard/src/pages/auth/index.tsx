@@ -68,7 +68,7 @@ export const Auth = ({ type }: Props) => {
                 <Card>
                     <CardHeader>
                         <CardTitle>
-                            {type === "signin" ? "Entre na sua conta." : "Criar nova conta."}
+                            {type === "signin" ? "Entre na sua conta" : "Criar nova conta"}
                         </CardTitle>
                         <CardSubTitle>
                             Insira as informações necessárias!
