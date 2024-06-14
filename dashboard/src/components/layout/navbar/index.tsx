@@ -1,44 +1,55 @@
-import { useState } from "react";
-import { useTheme } from "../../../hooks/Theme";
-import { useAuth } from "../../../hooks/Auth";
-import { Container, Icon, LeftSide, RightSide } from "./styles";
-import { BiExitFullscreen, BiFullscreen } from "react-icons/bi";
-import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { TbLogout } from "react-icons/tb";
+import { useState } from "react"
+import { Container, Icon, LeftSide, RightSide } from "./styles"
+import { BiExitFullscreen, BiFullscreen } from "react-icons/bi"
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md"
+import { TbLogout } from "react-icons/tb"
+import { useAuth } from "../../../hooks/Auth"
+import { useTheme } from "../../../hooks/Theme"
 
-export const Navibar = () => {
-    const [fullScreenEnabled, setFullScreenEnabled] = useState(false);
-    const { handleToggleTheme, theme } = useTheme();
-    const { handleSignOut } = useAuth();
+export const Navbar = () => {
+    const [fullScreenEnabled, setFullScreenEnabled] = useState(false)
+
+    const { handleToggleTheme, theme } = useTheme()
+    const { handleSignOut } = useAuth()
 
     const handleToggleFullScreen = async () => {
-        let enabled = true;
+        let enabled = true
 
         if (!document.fullscreenElement) {
-            await document.documentElement.requestFullscreen();
+            await document.documentElement.requestFullscreen()
         } else if (document.exitFullscreen) {
             await document.exitFullscreen();
-            enabled = false;
+            enabled = false
         }
 
-        setFullScreenEnabled(enabled);
-    };
+        setFullScreenEnabled(enabled)
+    }
 
     return (
         <Container>
             <LeftSide>
                 <Icon onClick={handleToggleFullScreen}>
-                    {fullScreenEnabled ? <BiExitFullscreen /> : <BiFullscreen />}
+                    {fullScreenEnabled ?
+                        <BiExitFullscreen />
+                        :
+                        <BiFullscreen />
+                    }
                 </Icon>
             </LeftSide>
+
             <RightSide>
                 <Icon onClick={handleToggleTheme}>
-                    {theme === "dark" ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
+                    {theme == 'dark' ?
+                        <MdOutlineLightMode />
+                        :
+                        <MdOutlineDarkMode />
+                    }
                 </Icon>
+
                 <Icon onClick={handleSignOut}>
                     <TbLogout />
                 </Icon>
             </RightSide>
         </Container>
-    );
-};
+    )
+}

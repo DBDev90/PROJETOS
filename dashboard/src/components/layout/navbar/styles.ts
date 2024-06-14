@@ -28,7 +28,7 @@ export const Icon = styled.div`
     color: ${props => props.theme.COLORS.navbarColor};
     cursor: pointer;
 
-    &:hover{
+    &:hover {
         background-color: ${props => props.theme.COLORS.navbarBackgroundHover};
     }
 `

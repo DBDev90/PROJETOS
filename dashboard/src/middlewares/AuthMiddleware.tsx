@@ -7,7 +7,7 @@ type Props = {
     children: ReactNode;
 };
 
-export const AuthMiddlewares = ({ children }: Props) => {
+export const AuthMiddleware = ({ children }: Props) => {
     const { authStatus } = useAppSelector(state => state.auth);
 
     if (authStatus === "authenticated") {

@@ -25,8 +25,8 @@ export const HeaderTitle = styled.span`
     font-weight: 800;
 `
 
-export const HeaderSubTitle = styled.span`
-    font-size: ${props => props.theme.FONT_SIZES.xl};
+export const HeaderSubtitle = styled.span`
+    font-size: ${props => props.theme.FONT_SIZES.sm};
     color: ${props => props.theme.COLORS.textColor500};
 `
 
@@ -68,6 +68,7 @@ export const InformationCardContent = styled.div`
     flex-direction: column;
     gap: 5px;
 `
+
 export const InformationCardContentValue = styled.span`
     color: ${props => props.theme.COLORS.textColor500};
     font-weight: 700;
@@ -94,7 +95,7 @@ export const NewTransactionCard = styled(Link)`
     cursor: pointer;
     transition: all .3s;
 
-    &:hover{
+    &:hover {
         border-color: ${props => props.theme.COLORS.primary};
     }
 `

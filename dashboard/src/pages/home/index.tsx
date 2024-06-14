@@ -13,7 +13,7 @@ import {
     Header,
     HeaderFilter,
     HeaderInfo,
-    HeaderSubTitle,
+    HeaderSubtitle,
     HeaderTitle,
     InformationCard,
     InformationCardContent,
@@ -27,72 +27,68 @@ import { Button } from "../../components/button";
 import { MdAdd } from "react-icons/md";
 
 export const Home = () => {
-    const [loadingRequest, setLoadingRequest] = useState(true);
-    const [monthSelected, setMonthSelected] = useState(
-        (new Date().getMonth() + 1).toString().padStart(2, "0")
-    );
-    const [yearSelected, setYearSelected] = useState(
-        new Date().getFullYear().toString()
-    );
+    const [loadingRequest, setLoadingRequest] = useState(true)
+    const [monthSelected, setMonthSelected] = useState((new Date().getMonth() + 1).toString().padStart(2, '0'))
+    const [yearSelected, setYearSelected] = useState(new Date().getFullYear().toString())
     const [dataDashboard, setDataDashboard] = useState({
         balance: 0,
         pending_transactions: 0,
-        completed_transactions: 0,
-    });
-    const theme = useTheme();
+        completed_transactions: 0
+    })
 
-    const handleMonthSelected = (e: ChangeEvent<HTMLSelectElement>) =>
-        setMonthSelected(e.target.value);
-    const handleYearSelected = (e: ChangeEvent<HTMLSelectElement>) =>
-        setYearSelected(e.target.value);
+    const theme = useTheme()
+
+    const handleMonthSelected = (e: ChangeEvent<HTMLSelectElement>) => setMonthSelected(e.target.value)
+    const handleYearSelected = (e: ChangeEvent<HTMLSelectElement>) => setYearSelected(e.target.value)
 
     const getYears = () => {
         const years = [];
 
         for (let year = 2024; year <= new Date().getFullYear(); year++) {
-            years.push({ label: year.toString(), value: year.toString() });
+            years.push({ label: year.toString(), value: year.toString() })
         }
 
         return years;
-    };
+    }
 
     const getMonths = () => {
-        const monthArray = Array.from({ length: 12 }, (_, index) => {
-            const date = new Date(new Date().getFullYear(), index, 1);
+        const monthsArray = Array.from({ length: 12 }, (_, index) => {
+            const date = new Date(new Date().getFullYear(), index, 1)
             return {
-                value: (index + 1).toString().padStart(2, "0"),
-                label: date.toLocaleString("pt-BR", { month: "long" }),
-            };
-        });
+                value: (index + 1).toString().padStart(2, '0'),
+                label: date.toLocaleString('pt-BR', { month: 'long' })
+            }
+        })
 
-        return monthArray;
-    };
+        return monthsArray;
+    }
 
     const handleGetDashboard = async () => {
-        setLoadingRequest(true);
-        const response = await getDashboard(monthSelected, yearSelected);
-        setDataDashboard(response);
-    };
+        setLoadingRequest(true)
+        const response = await getDashboard(monthSelected, yearSelected)
+        setLoadingRequest(false)
+        setDataDashboard(response)
+    }
 
     useEffect(() => {
-        handleGetDashboard();
-    }, [handleGetDashboard, monthSelected, yearSelected]);
+        handleGetDashboard()
+    }, [monthSelected, yearSelected])
 
     return (
         <Container>
             <Header>
                 <HeaderInfo>
-                    <HeaderTitle>Meu Saldo</HeaderTitle>
-                    <HeaderSubTitle>
-                        Acompanhe seu saldo e filtre por mês e ano com facilidade
-                    </HeaderSubTitle>
+                    <HeaderTitle>Meu saldo</HeaderTitle>
+                    <HeaderSubtitle>Acompanhe seu saldo e filtre por mês e ano com facilidade!</HeaderSubtitle>
                 </HeaderInfo>
+
                 <HeaderFilter>
                     <SelectInput
                         value={monthSelected}
                         options={getMonths()}
                         onChange={handleMonthSelected}
                     />
+
                     <SelectInput
                         value={yearSelected}
                         options={getYears()}
@@ -101,13 +97,13 @@ export const Home = () => {
                 </HeaderFilter>
             </Header>
 
-            {loadingRequest && (
+            {loadingRequest &&
                 <Loading>
                     <ScaleLoader color={theme.COLORS.primary} />
                 </Loading>
-            )}
+            }
 
-            {!loadingRequest && (
+            {!loadingRequest &&
                 <Body>
                     <BodyRow>
                         <InformationCard>
@@ -115,12 +111,7 @@ export const Home = () => {
 
                             <InformationCardContent>
                                 <InformationCardContentValue
-                                    style={{
-                                        color:
-                                            dataDashboard.balance >= 0
-                                                ? theme.COLORS.success
-                                                : theme.COLORS.danger,
-                                    }}
+                                    style={{ color: dataDashboard.balance >= 0 ? theme.COLORS.success : theme.COLORS.danger }}
                                 >
                                     {formatValue(dataDashboard.balance)}
                                 </InformationCardContentValue>
@@ -165,13 +156,14 @@ export const Home = () => {
                             <Button borderRadius="rounded">
                                 <MdAdd size={21} />
                             </Button>
+
                             <NewTransactionCardLabel>
                                 Criar nova transação
                             </NewTransactionCardLabel>
                         </NewTransactionCard>
                     </BodyRow>
                 </Body>
-            )}
+            }
         </Container>
-    );
-};
+    )
+}

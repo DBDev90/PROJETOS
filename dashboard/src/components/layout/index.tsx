@@ -1,23 +1,25 @@
-import { Outlet } from "react-router-dom";
-import { AuthMiddlewares } from "../../middlewares/AuthMiddlewares";
-import { Navibar } from "./navbar";
-import { Sidebar } from "./sidebar";
-import { BodyContent, Container, Content, NavbarContent } from "./styles";
+import { Outlet } from "react-router-dom"
+import { Sidebar } from "./Sidebar"
+import { BodyContent, Container, Content, NavbarContent } from "./styles"
+import { AuthMiddleware } from "../../middlewares/AuthMiddleware"
+import { Navbar } from "./Navbar"
 
 export const Layout = () => {
     return (
-        <AuthMiddlewares>
+        <AuthMiddleware>
             <Container>
                 <Sidebar />
+
                 <Content>
                     <NavbarContent>
-                        <Navibar />
+                        <Navbar />
                     </NavbarContent>
+
                     <BodyContent>
                         <Outlet />
                     </BodyContent>
                 </Content>
             </Container>
-        </AuthMiddlewares>
-    );
+        </AuthMiddleware>
+    )
 }
