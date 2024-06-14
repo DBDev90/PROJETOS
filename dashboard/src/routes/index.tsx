@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { Auth } from "../pages/auth"
+import { Layout } from "../components/layout"
 
 export const MainRoutes = () => {
     return (
@@ -13,6 +14,10 @@ export const MainRoutes = () => {
                 path="/signup"
                 element={<Auth type="signup" />}
             />
+
+            <Route element={<Layout />}>
+
+            </Route>
         </Routes>
     )
 }
