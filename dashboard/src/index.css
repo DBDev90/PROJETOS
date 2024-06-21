@@ -1,38 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 body {
-  margin: 0;
-  font-family: 'Nunito', sans-serif;
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
 }
 
 /* Custom Text Selection Color */
-::selection {
-  color: white;
-  background: #5049e2;
+::-moz-selection {
+    color: white;
+    background: #5049e2;
 }
 
-::-moz-selection {
-  color: white;
-  background: #5049e2;
+::selection {
+    color: white;
+    background: #5049e2;
 }
 
 /* Custom Scrollbar */
+/* Width */
 ::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #a5a5a58f;
-  border-radius: 20px;
+    background: #a5a5a58f;
+    border-radius: 20px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #5049e2;
+    background: #665efa;
 }

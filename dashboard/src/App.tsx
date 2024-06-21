@@ -1,23 +1,29 @@
 import { useEffect } from "react";
-import { useAuth } from "./hooks/Auth";
-import { useTheme } from "./hooks/Theme";
+import { useAuth } from "./hooks/auth";
+import { MainRoutes } from "./routes";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./themes/lightTheme";
 import { darkTheme } from "./themes/darkTheme";
-import { MainRoutes } from "./routes";
+import { useTheme } from "./hooks/theme";
 
-export const App = () => {
-  const { handleAuthenticateUser } = useAuth();
-  const { handleInitTheme, theme } = useTheme();
+const App = () => {
+    const { handleAuthenticateUser } = useAuth()
+    const { handleInitTheme, theme } = useTheme()
 
-  useEffect(() => {
-    handleAuthenticateUser();
-    handleInitTheme();
-  }, [handleAuthenticateUser, handleInitTheme]);
+    useEffect(() => {
+        // Authenticate user using token saved in local storage
+        handleAuthenticateUser()
 
-  return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <MainRoutes />
-    </ThemeProvider>
-  );
-};
+        // Apply theme saved by user to local storage
+        handleInitTheme()
+    }, [])
+    
+
+    return (
+        <ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
+            <MainRoutes />
+        </ThemeProvider>
+    )
+}
+
+export default App;

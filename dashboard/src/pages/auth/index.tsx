@@ -1,67 +1,57 @@
-import { useEffect, useState } from "react";
-import { useAuth } from "../../hooks/Auth";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react"
+import TextInput from "../../components/TextInput"
 import {
     Card,
     CardBody,
-    CardFooter,
     CardHeader,
     CardSubTitle,
     CardTitle,
     Container,
+    CardFooter,
     Link,
-    Wrapper,
-} from "./styles";
-import { Alert } from "../../components/alert";
-import { TextInput } from "../../components/textInput";
-import { Button } from "../../components/button";
+    Wrapper
+} from "./styles"
+import { Button } from "../../components/Button"
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
+import Alert from "../../components/Alert";
 
 type Props = {
-    type: "signin" | "signup";
-};
+    type: 'signin' | 'signup'
+}
 
 export const Auth = ({ type }: Props) => {
-    const [nameInput, setNameInput] = useState("");
-    const [emailInput, setEmailInput] = useState("");
-    const [passwordInput, setPasswordInput] = useState("");
-    const [showAlert, setShowAlert] = useState({
-        type: "error",
-        message: "",
-        show: false,
-    });
+    const [nameInput, setNameInput] = useState('')
+    const [emailInput, setEmailInput] = useState('')
+    const [passwordInput, setPasswordInput] = useState('')
+    const [showAlert, setShowAlert] = useState({ type: "error", message: "", show: false })
 
-    const { handleSignIn, handleSignUp } = useAuth();
+    const { handleSignIn, handleSignUp } = useAuth()
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleOnClick = async () => {
-        const [name, email, password] = [nameInput, emailInput, passwordInput];
+        const [name, email, password] = [nameInput, emailInput, passwordInput]
 
-        if ((type == "signup" && !name) || !email || !password) {
-            setShowAlert({
-                type: "error",
-                message: "Preencha todos os campos!",
-                show: true,
-            });
+        if ((type == 'signup' && !name) || !email || !password) {
+            setShowAlert({ type: 'error', message: 'Preencha todos os campos!', show: true })
             return;
         }
 
-        const request = await (type == "signin"
-            ? handleSignIn({ email, password })
-            : handleSignUp({ name, email, password }));
+        const request = await (type == 'signin' ? handleSignIn({ email, password }) : handleSignUp({ name, email, password }))
 
         if (request != true) {
-            setShowAlert({ type: "error", message: request, show: true });
+            setShowAlert({ type: 'error', message: request, show: true })
             return;
         }
 
         // Redirect user after authentication
-        navigate("/");
-    };
+        navigate('/')
+    }
 
     useEffect(() => {
-        setShowAlert({ type: "error", message: "", show: false });
-    }, [type]);
+        setShowAlert({ type: 'error', message: '', show: false })
+    }, [type])
 
     return (
         <Wrapper>
@@ -69,56 +59,59 @@ export const Auth = ({ type }: Props) => {
                 <Alert
                     type={showAlert.type}
                     show={showAlert.show}
-                    setShow={(show) => setShowAlert({ ...showAlert, show })}
+                    setShow={show => setShowAlert({ ...showAlert, show })}
                     title={showAlert.message}
                 />
 
                 <Card>
                     <CardHeader>
                         <CardTitle>
-                            {type == "signin" ? "Entre na sua conta!" : "Criar uma conta!"}
+                            {type == 'signin' ? 'Entre na sua conta!' : 'Criar uma conta!'}
                         </CardTitle>
                         <CardSubTitle>Insira as informações necessárias!</CardSubTitle>
                     </CardHeader>
 
                     <CardBody>
-                        {type == "signup" && (
+                        {type == 'signup' &&
                             <TextInput
                                 value={nameInput}
                                 placeholder="Digite seu nome"
-                                onChange={(e) => setNameInput(e.target.value)}
+                                onChange={e => setNameInput(e.target.value)}
                                 borderRadius="sm"
                             />
-                        )}
+                        }
 
                         <TextInput
                             value={emailInput}
                             placeholder="Digite seu email"
-                            onChange={(e) => setEmailInput(e.target.value)}
+                            onChange={e => setEmailInput(e.target.value)}
                             borderRadius="sm"
                         />
-
                         <TextInput
                             value={passwordInput}
                             placeholder="Digite sua senha"
-                            onChange={(e) => setPasswordInput(e.target.value)}
+                            onChange={e => setPasswordInput(e.target.value)}
                             borderRadius="sm"
                         />
                     </CardBody>
 
                     <CardFooter>
                         <Button onClick={handleOnClick} size="md">
-                            {type == "signin" ? "Entrar" : "Registrar-se"}
+                            {type == 'signin' ? 'Entrar' : 'Registrar-se'}
                         </Button>
 
-                        {type == "signin" ? (
-                            <Link to="/signup">Não tem conta? Registrar-se</Link>
-                        ) : (
-                            <Link to="/signin">Já tem conta? Entrar</Link>
-                        )}
+                        {type == 'signin' ?
+                            <Link to='/signup'>
+                                Não tem conta? Registrar-se
+                            </Link>
+                            :
+                            <Link to='/signin'>
+                                Já tem conta? Entrar
+                            </Link>
+                        }
                     </CardFooter>
                 </Card>
             </Container>
         </Wrapper>
-    );
-};
+    )
+}

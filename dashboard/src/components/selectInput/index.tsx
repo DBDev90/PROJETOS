@@ -1,15 +1,15 @@
-import { ChangeEvent, useId } from "react";
-import { Container, Label, Select } from "./styles";
+import { ChangeEvent, useId } from "react"
+import { Container, Select, Label } from "./styles"
 
 type Props = {
-    value: string;
-    options: { label: string, value: string }[];
-    onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
-    label?: string;
-};
+    value: string,
+    options: { label: string, value: string }[],
+    onChange: (e: ChangeEvent<HTMLSelectElement>) => void,
+    label?: string
+}
 
-export const SelectInput = ({ value, options, onChange, label }: Props) => {
-    const referenceId = useId();
+const SelectInput = ({ value, options, onChange, label }: Props) => {
+    const referenceId = useId()
 
     return (
         <Container>
@@ -31,4 +31,6 @@ export const SelectInput = ({ value, options, onChange, label }: Props) => {
             </Select>
         </Container>
     )
-};
+}
+
+export default SelectInput

@@ -1,36 +1,30 @@
-import { ReactNode, useEffect } from "react";
-import { Container, Content, Title } from "./styles";
-import { MdDoneAll, MdInfoOutline } from "react-icons/md";
-
+import { MdInfoOutline } from "react-icons/md"
+import { Container, Content, Title } from "./styles"
+import { ReactNode, useEffect } from "react"
+import { MdDoneAll } from "react-icons/md";
 type Props = {
-    type: string;
-    show: boolean;
-    setShow: (value: boolean) => void;
-    autoHideDuration?: number;
-    title?: string;
-    children?: ReactNode;
-};
+    type: string,
+    show: boolean,
+    setShow: (value: boolean) => void,
+    autoHideDuration?: number,
+    title?: string,
+    children?: ReactNode
+}
 
-export const Alert = ({
-    type,
-    show,
-    setShow,
-    title,
-    children,
-    autoHideDuration = 6000,
-}: Props) => {
+const Alert = ({ type, show, setShow, title, children, autoHideDuration = 6000 }: Props) => {
     useEffect(() => {
         if (show && autoHideDuration) {
-            setTimeout(() => {
-                setShow(false);
-            }, autoHideDuration);
+            setTimeout(() => { setShow(false) }, autoHideDuration)
         }
-    }, [autoHideDuration, setShow, show]);
+    }, [show])
 
     return (
-        <Container $show={show} $type={type}>
-            {type == "error" && <MdInfoOutline className="icon" />}
-            {type == "success" && <MdDoneAll className="icon" />}
+        <Container
+            $show={show}
+            $type={type}
+        >
+            {type == 'error' && <MdInfoOutline className="icon" />}
+            {type == 'success' && <MdDoneAll className="icon" />}
 
             <Content>
                 {title && <Title>{title}</Title>}
@@ -38,5 +32,7 @@ export const Alert = ({
                 {children}
             </Content>
         </Container>
-    );
-};
+    )
+}
+
+export default Alert;

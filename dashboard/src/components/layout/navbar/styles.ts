@@ -8,7 +8,6 @@ export const Container = styled.div`
     padding: 0 60px;
     user-select: none;
 `
-
 export const LeftSide = styled.div``
 
 export const RightSide = styled.div`
@@ -22,13 +21,13 @@ export const Icon = styled.div`
     align-items: center;
     justify-content: center;
     width: 42px;
-    height: 42px;
+    height: 42px; 
     border-radius: 50%;
-    font-size: ${props => props.theme.FONT_SIZES.xl};
-    color: ${props => props.theme.COLORS.navbarColor};
+    font-size: ${(props) => props.theme.FONT_SIZES.xl};
+    color: ${(props) => props.theme.COLORS.navbarColor};
     cursor: pointer;
 
     &:hover {
-        background-color: ${props => props.theme.COLORS.navbarBackgroundHover};
+        background-color: ${(props) => props.theme.COLORS.navbarBackgroundHover};
     }
 `

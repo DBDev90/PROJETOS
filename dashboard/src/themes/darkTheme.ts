@@ -1,4 +1,4 @@
-import { DefaultTheme } from "styled-components";
+import { DefaultTheme } from "styled-components"
 
 export const darkTheme: DefaultTheme = {
     COLORS: {
@@ -51,4 +51,4 @@ export const darkTheme: DefaultTheme = {
         xl: '1.6rem',
         xxl: '2rem',
     }
-}
+} 

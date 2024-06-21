@@ -1,8 +1,7 @@
-import { User } from "../@types/Auth";
-import { useAppDispatch } from "../redux/hooks";
-import { setAuthStatus, setAuthToken, setUser } from "../redux/slices/authSlice";
-import { signIn, signUp } from "../services/requests/AuthRequest";
-import { getUser } from "../services/requests/UserRequest";
+import { User } from "../@types/Auth" 
+import { setAuthStatus, setAuthToken, setUser } from "../redux/slices/authSlice"
+import { getUser, signIn, signUp } from "../services/requests"
+import { useAppDispatch } from "../redux/hooks"
 
 const LOCAL_STORAGE_KEY = import.meta.env.VITE_LOCAL_STORAGE_AUTH_KEY
 
@@ -29,7 +28,7 @@ export const useAuth = () => {
         if (!request.data || !authToken) {
             dispatch(setAuthStatus('not_authenticated'))
             return;
-        }
+        };
 
         const { data } = request;
         authenticate(data.user, authToken)
@@ -42,8 +41,8 @@ export const useAuth = () => {
         if (request.data) {
             const { data } = request;
 
-            authenticate(data.user, data.authToken);
-            return true;
+            authenticate(data.user, data.authToken)
+            return true
         }
 
         dispatch(setAuthStatus('not_authenticated'))
@@ -57,8 +56,8 @@ export const useAuth = () => {
         if (request.data) {
             const { data } = request;
 
-            authenticate(data.user, data.authToken);
-            return true;
+            authenticate(data.user, data.authToken)
+            return true
         }
 
         dispatch(setAuthStatus('not_authenticated'))

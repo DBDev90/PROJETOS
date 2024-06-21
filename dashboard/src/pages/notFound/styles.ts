@@ -1,5 +1,5 @@
-import { TbError404 } from "react-icons/tb";
 import styled from "styled-components";
+import { TbError404 } from "react-icons/tb";
 
 export const Container = styled.div`
     height: 100vh;
@@ -7,10 +7,10 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-`
+    gap: 20px; 
+`;
 
 export const Icon = styled(TbError404)`
-    color: ${props => props.theme.COLORS.primary};
+    color: ${(props) => props.theme.COLORS.primary};
     font-size: 140px;
 `

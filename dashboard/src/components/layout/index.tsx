@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom"
-import { BodyContent, Container, Content, NavbarContent } from "./styles"
 import { AuthMiddleware } from "../../middlewares/AuthMiddleware"
-import { Sidebar } from "./sidebar"
-import { Navbar } from "./navbar"
+import { BodyContent, NavbarContent, Container, Content } from "./styles"
+import { Sidebar } from "./Sidebar"
+import { Navbar } from "./Navbar"
 
 export const Layout = () => {
     return (

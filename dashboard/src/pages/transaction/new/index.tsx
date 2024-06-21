@@ -1,13 +1,13 @@
 import { useState } from "react"
-import { TransactionStatus } from "../../../@types/Transaction"
-import { useTheme } from "styled-components"
-import { Body, Container, Footer, Header, HeaderInfo, HeaderSubtitle, HeaderTitle, Loading } from "./styles"
+import SelectInput from "../../../components/SelectInput"
+import TextInput from "../../../components/TextInput"
+import { Container, Header, HeaderTitle, HeaderSubtitle, Body, Footer, Loading, HeaderInfo } from "./styles"
+import { Button } from "../../../components/Button"
 import { ScaleLoader } from "react-spinners"
-import { newTransaction } from "../../../services/requests/TransactionsRequest"
-import { Alert } from "../../../components/alert"
-import { TextInput } from "../../../components/textInput"
-import { SelectInput } from "../../../components/selectInput"
-import { Button } from "../../../components/button"
+import { useTheme } from "styled-components"
+import Alert from "../../../components/Alert"
+import { newTransaction } from "../../../services/requests"
+import { TransactionStatus } from "../../../@types/Transaction"
 
 export const NewTransaction = () => {
     const [loadingRequest, setLoadingRequest] = useState(false)
@@ -22,7 +22,7 @@ export const NewTransaction = () => {
         const [title, amount, status] = [titleValue, amountValue, statusValue]
 
         if (!title || !amount || !status) {
-            setShowAlert({ type: "error", message: "Preencha todos os campos!", show: true });
+            setShowAlert({ type: "error", message: 'Preencha todos os campos!', show: true })
             return;
         }
 
@@ -69,7 +69,7 @@ export const NewTransaction = () => {
                     <Body>
                         <TextInput
                             label="Título da transação"
-                            placeholder="Ex: Salário"
+                            placeholder="Ex: Salário"
                             value={titleValue}
                             onChange={e => setTitleValue(e.target.value)}
                             borderRadius="sm"
@@ -85,7 +85,7 @@ export const NewTransaction = () => {
 
                         <SelectInput
                             label="Status"
-                            options={[{ label: "Pendente", value: 'pending' }, { label: 'Concluído', value: 'completed' }]}
+                            options={[{ label: 'Pendente', value: 'pending' }, { label: 'Concluído', value: 'completed' }]}
                             value={statusValue}
                             onChange={e => setStatusValue(e.target.value as TransactionStatus)}
                         />

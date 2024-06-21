@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom"
+import { Button } from "../../components/Button"
 import { Container, Icon } from "./styles"
-import { Button } from "../../components/button"
 
 export const NotFound = () => {
     const navigate = useNavigate()
 
-    const handleOnClick = () => navigate('/')
+    const handleOnClick = () => navigate("/")
 
     return (
         <Container>

@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter } from "react-router-dom"
 
 export const Wrapper = styled.div`
-    background-color: ${props => props.theme.COLORS.background};
+    background-color: ${(props) => props.theme.COLORS.background};
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: center; 
 `
 
 export const Container = styled.div`
-    display: flex;
+    display: flex; 
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -19,7 +19,7 @@ export const Container = styled.div`
 
 export const Card = styled.div`
     width: 100%;
-    border: 1px solid ${props => props.theme.COLORS.borderColor};
+    border: 1px solid ${(props) => props.theme.COLORS.borderColor};
     padding: 30px;
     box-shadow: black 0px 3px 7px -6px;
     border-radius: 4px;
@@ -27,7 +27,7 @@ export const Card = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 30px; 
     box-sizing: border-box;
 `
 
@@ -38,16 +38,16 @@ export const CardHeader = styled.div`
     text-align: center;
 `
 
-export const CardTitle = styled.span`
-    font-size: ${props => props.theme.FONT_SIZES.lg};
+export const CardTitle = styled.span` 
+    font-size: ${(props) => props.theme.FONT_SIZES.lg}; 
     font-weight: 800;
-    color: ${props => props.theme.COLORS.authCardTitleColor};
+    color: ${(props) => props.theme.COLORS.authCardTitleColor};
 `
 
-export const CardSubTitle = styled.span`
-    font-size: ${props => props.theme.FONT_SIZES.sm};
+export const CardSubTitle = styled.span` 
+    font-size: ${(props) => props.theme.FONT_SIZES.sm};
+    color: ${(props) => props.theme.COLORS.authCardSubTitleColor};
     font-weight: 600;
-    color: ${props => props.theme.COLORS.authCardSubTitleColor};
 `
 
 export const CardBody = styled.div`
@@ -59,14 +59,13 @@ export const CardBody = styled.div`
 `
 
 export const CardFooter = styled.div`
-    width: 100%;
+    width: 100%; 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 `
-
 export const Link = styled(LinkRouter)`
-    font-size: ${props => props.theme.FONT_SIZES.sm};
-    color: ${props => props.theme.COLORS.primary}
+    font-size: ${(props) => props.theme.FONT_SIZES.sm};
+    color: ${(props) => props.theme.COLORS.primary};
 `

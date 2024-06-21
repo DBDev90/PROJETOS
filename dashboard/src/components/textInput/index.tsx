@@ -1,26 +1,21 @@
-import { ChangeEvent, useId } from "react";
-import { Container, Input, Label } from "./styles";
+import { ChangeEvent, useId } from "react"
+import { Container, Input, Label } from "./styles"
 
 type Props = {
-    value: string;
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    label?: string;
-    placeholder?: string;
-    borderRadius?: "sm" | "md";
-};
+    value: string,
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void,
+    label?: string,
+    placeholder?: string,
+    borderRadius?: 'sm' | 'md'
+}
 
-export const TextInput = ({
-    value,
-    onChange,
-    label,
-    placeholder,
-    borderRadius = "md",
-}: Props) => {
-    const referenceId = useId();
+const TextInput = ({ value, onChange, label, placeholder, borderRadius = 'md' }: Props) => {
+    const referenceId = useId()
 
     return (
         <Container>
             {label && <Label htmlFor={referenceId}>{label}</Label>}
+
             <Input
                 id={referenceId}
                 placeholder={placeholder}
@@ -29,5 +24,7 @@ export const TextInput = ({
                 $borderRadius={borderRadius}
             />
         </Container>
-    );
-};
+    )
+}
+
+export default TextInput

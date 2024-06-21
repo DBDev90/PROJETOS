@@ -1,10 +1,12 @@
-import { useState } from "react"
-import { Container, Icon, LeftSide, RightSide } from "./styles"
-import { BiExitFullscreen, BiFullscreen } from "react-icons/bi"
-import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md"
-import { TbLogout } from "react-icons/tb"
-import { useAuth } from "../../../hooks/Auth"
-import { useTheme } from "../../../hooks/Theme"
+import { useState } from "react";
+import { Container, LeftSide, RightSide, Icon } from "./styles"
+import { BiFullscreen } from "react-icons/bi";
+import { BiExitFullscreen } from "react-icons/bi";
+import { MdOutlineLightMode } from "react-icons/md";
+import { MdOutlineDarkMode } from "react-icons/md";
+import { TbLogout } from "react-icons/tb";
+import { useTheme } from "../../../hooks/theme";
+import { useAuth } from "../../../hooks/auth";
 
 export const Navbar = () => {
     const [fullScreenEnabled, setFullScreenEnabled] = useState(false)
@@ -12,17 +14,17 @@ export const Navbar = () => {
     const { handleToggleTheme, theme } = useTheme()
     const { handleSignOut } = useAuth()
 
-    const handleToggleFullScreen = async () => {
+    const handleToggleFullScreen = () => {
         let enabled = true
 
         if (!document.fullscreenElement) {
-            await document.documentElement.requestFullscreen()
+            document.documentElement.requestFullscreen();
         } else if (document.exitFullscreen) {
-            await document.exitFullscreen();
+            document.exitFullscreen();
             enabled = false
         }
 
-        setFullScreenEnabled(enabled)
+        setFullScreenEnabled(enabled);
     }
 
     return (
@@ -36,10 +38,9 @@ export const Navbar = () => {
                     }
                 </Icon>
             </LeftSide>
-
             <RightSide>
                 <Icon onClick={handleToggleTheme}>
-                    {theme == 'dark' ?
+                    {theme == 'dark' ? 
                         <MdOutlineLightMode />
                         :
                         <MdOutlineDarkMode />

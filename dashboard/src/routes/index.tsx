@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom"
-import { Auth } from "../pages/auth"
-import { Layout } from "../components/layout"
-import { Home } from "../pages/home"
-import { NewTransaction } from "../pages/transaction/new"
-import { EditTransaction } from "../pages/transaction/edit"
-import { Transactions } from "../pages/transaction/transactions"
-import { Account } from "../pages/account"
-import { NotFound } from "../pages/notFound"
+import { Home } from "../pages/Home"
+import { Auth } from "../pages/Auth"
+import { Layout } from "../components/Layout"
+import { NotFound } from "../pages/NotFound"
+import { NewTransaction } from "../pages/Transaction/New"
+import { EditTransaction } from "../pages/Transaction/Edit"
+import { Account } from "../pages/Account"
+import { Transactions } from "../pages/Transaction/Transactions"
 
 export const MainRoutes = () => {
     return (
@@ -22,17 +22,38 @@ export const MainRoutes = () => {
             />
 
             <Route element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="/account" element={<Account />} />
+                <Route
+                    index
+                    element={<Home />}
+                />
+
+                <Route
+                    path="/account"
+                    element={<Account />}
+                />
 
                 <Route path="/transacoes">
-                    <Route index element={<Transactions />} />
-                    <Route path="nova" element={<NewTransaction />} />
-                    <Route path=":id/editar" element={<EditTransaction />} />
+                    <Route
+                        index
+                        element={<Transactions />}
+                    />
+
+                    <Route
+                        path="nova"
+                        element={<NewTransaction />}
+                    />
+
+                    <Route
+                        path=":id/editar"
+                        element={<EditTransaction />}
+                    />
                 </Route>
             </Route>
 
-            <Route path="*" element={<NotFound/>}/>
+            <Route
+                path="*"
+                element={<NotFound />}
+            />
         </Routes>
     )
 }
