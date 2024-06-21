@@ -21,7 +21,7 @@ type Props = {
   onDelete: (id: number) => void;
 };
 
-export const Transactiontable = ({ data, onEdit, onDelete }: Props) => {
+export const Transactionstable = ({ data, onEdit, onDelete }: Props) => {
   const theme = useTheme();
 
   return (
