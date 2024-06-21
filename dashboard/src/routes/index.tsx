@@ -6,6 +6,7 @@ import { NewTransaction } from "../pages/transaction/new"
 import { EditTransaction } from "../pages/transaction/edit"
 import { Transactions } from "../pages/transaction/transactions"
 import { Account } from "../pages/account"
+import { NotFound } from "../pages/notFound"
 
 export const MainRoutes = () => {
     return (
@@ -30,6 +31,8 @@ export const MainRoutes = () => {
                     <Route path=":id/editar" element={<EditTransaction />} />
                 </Route>
             </Route>
+
+            <Route path="*" element={<NotFound/>}/>
         </Routes>
     )
 }

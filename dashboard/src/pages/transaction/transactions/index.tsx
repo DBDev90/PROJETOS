@@ -32,7 +32,7 @@ import {
 import { TextInput } from "../../../components/textInput";
 import { Button } from "../../../components/button";
 import { Alert } from "../../../components/alert";
-import { Transactionstable } from "../../../components/transactionsTable";
+import { TransactionsTable } from "../../../components/transactionsTable";
 
 export const Transactions = () => {
   const [loadingRequest, setLoadingRequest] = useState(true);
@@ -156,7 +156,7 @@ export const Transactions = () => {
             </Empty>
           ) : (
             <>
-              <Transactionstable
+              <TransactionsTable
                 data={transactionsFiltered}
                 onEdit={handleEditTransaction}
                 onDelete={handleDeleteTransaction}

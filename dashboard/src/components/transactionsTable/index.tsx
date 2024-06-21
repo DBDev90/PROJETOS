@@ -1,5 +1,7 @@
 import { useTheme } from "styled-components";
 import { Transaction } from "../../@types/Transaction";
+import { formatDate } from "../../utils/formatDate";
+import { formatValue } from "../../utils/formatValue";
 import {
   ActionBtn,
   Actions,
@@ -9,11 +11,10 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableHead,
+  TableHeadCell,
   TableRow,
-  Tablehead,
 } from "./styles";
-import { formatDate } from "../../utils/formatDate";
-import { formatValue } from "../../utils/formatValue";
 
 type Props = {
   data: Transaction[];
@@ -21,26 +22,27 @@ type Props = {
   onDelete: (id: number) => void;
 };
 
-export const Transactionstable = ({ data, onEdit, onDelete }: Props) => {
+export const TransactionsTable = ({ data, onEdit, onDelete }: Props) => {
   const theme = useTheme();
 
   return (
     <Container>
       <Table>
-        <Tablehead>
+        <TableHead>
           <TableRow>
-            <TableCell style={{ width: 1 }}>ID</TableCell>
-            <TableCell>Título</TableCell>
-            <TableCell>Data</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell>Valor</TableCell>
-            <TableCell style={{ width: 1 }}>Ações</TableCell>
+            <TableHeadCell style={{ width: 1 }}>#ID</TableHeadCell>
+            <TableHeadCell>Título</TableHeadCell>
+            <TableHeadCell>Data</TableHeadCell>
+            <TableHeadCell>Status</TableHeadCell>
+            <TableHeadCell>Valor</TableHeadCell>
+            <TableHeadCell style={{ width: 1 }}>Ações</TableHeadCell>
           </TableRow>
-        </Tablehead>
+        </TableHead>
+
         <TableBody>
           {data.map((transaction) => (
             <TableRow key={transaction.id}>
-              <TableCell>{transaction.id}</TableCell>
+              <TableCell>#{transaction.id}</TableCell>
               <TableCell>{transaction.title}</TableCell>
               <TableCell>{formatDate(transaction.created_at)}</TableCell>
               <TableCell>
@@ -65,7 +67,7 @@ export const Transactionstable = ({ data, onEdit, onDelete }: Props) => {
                     <EditIcon />
                   </ActionBtn>
                   <ActionBtn
-                    $variant="darnger"
+                    $variant="danger"
                     onClick={() => onDelete(transaction.id)}
                   >
                     <DeleteIcon />

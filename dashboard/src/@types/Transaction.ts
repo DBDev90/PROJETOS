@@ -1,47 +1,47 @@
-export type TransactionStatus = "pending" | "completed";
+export type TransactionStatus = "pending" | "completed"
 
 export type Transaction = {
-    id: number;
-    title: string;
-    status: TransactionStatus;
-    amount: number;
-    created_at: number;
-    use_id: number;
-};
+    id: number,
+    title: string,
+    status: TransactionStatus,
+    amount: number,
+    created_at: number,
+    user_id: number
+}
 
-export type TransactionDashboard = Omit<Transaction, "id" | "title" | "status" | "user_id">;
+export type TransactionDashboard = Omit<Transaction, 'id' | 'title' | 'status' | 'user_id'>
 
 export type ApiGetTransactions = {
     transactions: {
-        itemsReceived: number;
-        curPage: number;
-        nextPage?: string;
-        prevPage?: string;
-        offSet: number;
-        itemsTotal: number;
-        pageTotal: number;
-        items: Transaction[];
+        itemsReceived: number,
+        curPage: number,
+        nextPage?: string,
+        prevPage?: string,
+        offset: number,
+        itemsTotal: number,
+        pageTotal: number,
+        items: Transaction[]
     }
-};
+}
 
 export type ApiGetTransaction = {
-    transaction: Transaction;
-};
+    transaction: Transaction
+}
 
 export type ApiGetDashboard = {
-    transactions: TransactionDashboard[];
-    pending_transactions: number;
-    completed_transactions: number;
-};
+    transactions: TransactionDashboard[],
+    pending_transactions: number,
+    completed_transactions: number
+}
 
 export type ApiNewTransaction = {
-    transaction: Transaction;
-};
+    transaction: Transaction
+}
 
 export type ApiUpdateTransaction = {
-    transaction: Transaction;
-};
+    transaction: Transaction
+}
 
 export type ApiDeleteTransaction = {
-    success: boolean;
-};
+    success: boolean
+}

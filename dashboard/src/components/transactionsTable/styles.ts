@@ -1,4 +1,4 @@
-import { MdOutlineDeleteForever, MdOutlineModeEdit } from "react-icons/md";
+import { MdOutlineDeleteForever, MdOutlineEdit } from "react-icons/md";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -12,14 +12,14 @@ export const Table = styled.table`
   border-radius: 8px;
 `;
 
-export const Tablehead = styled.thead`
+export const TableHead = styled.thead`
   background-color: ${(props) => props.theme.COLORS.tableHeaderBackground};
   color: ${(props) => props.theme.COLORS.textColor500};
 `;
 
 export const TableBody = styled.tbody``;
 
-export const TbaleHeadCell = styled.th`
+export const TableHeadCell = styled.th`
   padding: 14px 20px;
   text-align: left;
   border-right: 1px solid
@@ -62,7 +62,7 @@ export const ActionBtn = styled.button<{ $variant: string }>`
   border-radius: 3px;
   border: 1px solid transparent;
   background-color: ${(props) =>
-    props.$variant === "warning"
+    props.$variant == "warning"
       ? props.theme.COLORS.warning
       : props.theme.COLORS.danger};
   color: ${(props) => props.theme.COLORS.white};
@@ -72,18 +72,18 @@ export const ActionBtn = styled.button<{ $variant: string }>`
 
   &:hover {
     border-color: ${(props) =>
-      props.$variant === "warning"
+      props.$variant == "warning"
         ? props.theme.COLORS.warning
         : props.theme.COLORS.danger};
     background-color: transparent;
     color: ${(props) =>
-      props.$variant === "warning"
+      props.$variant == "warning"
         ? props.theme.COLORS.warning
         : props.theme.COLORS.danger};
   }
 `;
 
-export const EditIcon = styled(MdOutlineModeEdit)`
+export const EditIcon = styled(MdOutlineEdit)`
   font-size: ${(props) => props.theme.FONT_SIZES.lg};
 `;
 
